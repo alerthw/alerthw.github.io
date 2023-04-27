@@ -11,6 +11,16 @@ const clearHistory = document.querySelector('.clear-history-btn');
 const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5'; // Замените YOUR_API_KEY на свой ключ API
 const history = [];
 
+function escapehtml(text) {
+  let map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
 
 function saveChatHistory() {
   localStorage.setItem('chatHistory', JSON.stringify(history));
@@ -28,7 +38,7 @@ function loadChatHistory() {
         }
         const chatMessage = document.createElement('div');
         chatMessage.classList.add('chat-message', message.role);
-        chatMessage.innerHTML = `<p>${message.role === 'user' ? 'Вы' : 'Бот'}: ${message.content}</p>`;
+        chatMessage.innerHTML = `<p>${message.role === 'user' ? 'Вы' : 'Бот'}: ${escapehtml(message.content)}</p>`;
         chatMessages.appendChild(chatMessage);
       }
       chatMessages.scrollTop = chatMessages.scrollHeight; 
@@ -104,11 +114,13 @@ async function sendMessage() {
     return;
   }
   chatForm.innerHTML = '<span class="loading-dots"></span>';
+  chatInput.disabled = true;
   chatForm.disabled = true;
+  clearHistory.disabled = true;
   examples.style.display = 'none';
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message', 'user');
-  userMessage.innerHTML = `<p>Вы: ${messageText}</p>`;
+  userMessage.innerHTML = `<p>Вы: ${escapehtml(messageText)}</p>`;
   chatMessages.appendChild(userMessage);
   chatInput.value = '';
   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -117,18 +129,20 @@ async function sendMessage() {
   const botMessage = await sendMessageToBot(messageText);
   const botResponse = document.createElement('div');
   botResponse.classList.add('chat-message', 'bot');
-  botResponse.innerHTML = `<p>${botMessage.content.replace(/```([^`]+)```/g, '<code>$1</code>')}</p>`;
+  botResponse.innerHTML = `<p>${escapehtml(botMessage.content.replace(/```([^`]+)```/g, '<code>$1</code>'))}</p>`;
   chatMessages.appendChild(botResponse);
   chatMessages.scrollTop = chatMessages.scrollHeight;
   chatForm.disabled = false;
+  chatInput.disabled = false;
+  clearHistory.disabled = false;
   chatForm.innerHTML = 'Send';
 }
 
 chatInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
+  if (e.key === 'Enter' && !e.shiftKey) {
     e.preventDefault();
     sendMessage();
-  }
+}
 });
 
 chatForm.addEventListener('click', (e) => {
