@@ -8,7 +8,7 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
-const apiKey = const apiKey = process.env.APIKEY;
+const apiKey = process.env.APIKEY;
 const history = [];
 
 function escapehtml(text) {
