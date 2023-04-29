@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 * {
   box-sizing: border-box;
@@ -36,7 +36,6 @@ body {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    background-color: #1c1c1c;
   }}
 
 .chat-header {
@@ -112,38 +111,13 @@ button[disabled]{
   max-height: calc(100% - 80px);
   overflow-y: scroll;
   padding: 10px;
-  background: linear-gradient(112deg, #0a0a0a, #292929, #272725, #1f1f1f, #262626, #0d0d0d, #181818);
+  background: var(--color-primary);
   background-size: 1800% 1800%;
 
-  -webkit-animation: rainbow 18s ease infinite;
-  -z-animation: rainbow 22s ease infinite;
-  -o-animation: rainbow 22s ease infinite;
-  animation: rainbow 22s ease infinite;
   scrollbar-color: #666 #1c1c1c;
   scrollbar-width: thin;
   border-bottom: 1px solid #444;
 }
-
-@-webkit-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-moz-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@-o-keyframes rainbow {
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-}
-@keyframes rainbow { 
-    0%{background-position:0% 82%}
-    50%{background-position:100% 19%}
-    100%{background-position:0% 82%}
-  }
 
 .chat-messages::-webkit-scrollbar {
   width: 8px;
@@ -363,4 +337,142 @@ code {
   padding: 0px 3px;
   display: inline-block;
   margin: 0px;
+}
+
+[data-theme="dark"] {
+  background-color: #181818;
+}
+
+[data-theme="dark"] .chat-conatiner {
+  background-color: #1c1c1c;
+}
+
+[data-theme="dark"] .chat-header {
+  background-color: #333;
+}
+
+[data-theme='dark'] .chat-messages {
+  background-color: #262626;
+  border-bottom: 3px solid #444;
+}
+
+[data-theme="dark"] .chat-header button {
+  background-color: #434343;
+  color: #fff;
+}
+
+[data-theme="dark"] .chat-messages::-webkit-scrollbar-track {
+  background: #1c1c1c;
+}
+
+[data-theme="dark"] .chat-messages::-webkit-scrollbar-thumb {
+  background-color: #666;
+  border: 3px solid #1c1c1c;
+}
+
+[data-theme="dark"] .chat-message p {
+  background-color: #333;
+  color: #fff;
+}
+
+[data-theme="dark"] .chat-input {
+  border-top: 1px solid #444;
+}
+
+[data-theme="dark"] .chat-input input {
+  background-color: #333;
+  color: #fff;
+}
+
+[data-theme="dark"] .chat-input input::placeholder {
+  color: #ccc;
+}
+
+[data-theme="dark"] .chat-input button {
+  background-color: #434343;
+  color: #fff;
+}
+
+[data-theme="dark"] .examples-header {
+  color: #fff;
+}
+
+[data-theme="dark"] .examples-btn {
+  background-color: #434343;
+  color: #fff;
+}
+
+[data-theme="dark"] .examples-btn:hover,
+.examples-btn:focus {
+  background-color: #5c5b5b;
+}
+
+
+[data-theme="light"] {
+background-color: #f7f7f7;
+}
+
+[data-theme="light"] .chat-container {
+background-color: #ffffff;
+}
+
+[data-theme="light"] .chat-header {
+background-color: #f2f2f2;
+color: #333333;
+}
+
+[data-theme="light"] .chat-header button {
+background-color: #e6e6e6;
+color: #333333;
+}
+
+[data-theme="light"] .chat-messages::-webkit-scrollbar-track {
+background: #e6e6e6;
+}
+
+[data-theme="light"] .chat-messages::-webkit-scrollbar-thumb {
+background-color: #cccccc;
+border: 3px solid #c1c1c1;
+}
+
+[data-theme="light"] .chat-message p {
+background-color: #f2f2f2;
+color: #333333;
+}
+
+[data-theme='light'] .chat-messages {
+background-color: #f1f1f1;
+border-bottom: 3px solid #c1c1c1;
+}
+
+[data-theme="light"] .chat-input {
+border-top: 1px solid #ffffff;
+}
+
+[data-theme="light"] .chat-input input {
+background-color: #e1e1e1;
+color: #333333;
+}
+
+[data-theme="light"] .chat-input input::placeholder {
+color: #999999;
+}
+
+[data-theme="light"] .chat-input button {
+background-color: #e1e1e1;
+color: #333333;
+}
+
+[data-theme="light"] .examples-header {
+color: #333333;
+}
+
+[data-theme="light"] .examples-btn {
+background-color: #dfdfdf;
+color: #333333;
+}
+
+[data-theme="light"] .examples-btn:hover,
+.examples-btn:focus {
+background-color: #d9d9d9;
 }

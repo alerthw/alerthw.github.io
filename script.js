@@ -8,8 +8,17 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
+const themeToggleBtn = document.querySelector('.theme-toggle-btn');
 const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5';
 const history = [];
+
+themeToggleBtn.addEventListener('click', () => {
+  // Получаем текущую тему
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+
+  // Меняем тему на противоположную
+  document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+});
 
 function escapehtml(text) {
   let map = {
@@ -70,7 +79,7 @@ window.onload = function() {
 modalSubmitButton.addEventListener('click', function() {
   if (modalInput.value.trim() !== '') {
   modalOverlay.style.display = 'none';
-  history.push({"role": "assistant", "content": modalInput.value});
+  history.push({"role": "system", "content": modalInput.value});
   saveChatHistory();}
   else {modalOverlay.style.display = 'none'};
 });
@@ -80,7 +89,7 @@ modalInput.addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     modalOverlay.style.display = 'none';
-    history.push({"role": "assistant", "content": modalInput.value});
+    history.push({"role": "system", "content": modalInput.value});
     saveChatHistory();
   }
   if (modalInput.value.trim() === '') {modalOverlay.style.display = 'none'};
