@@ -8,7 +8,7 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
-const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5'; // Замените YOUR_API_KEY на свой ключ API
+const apiKey = const apiKey = process.env.APIKEY;
 const history = [];
 
 function escapehtml(text) {
@@ -34,7 +34,7 @@ function loadChatHistory() {
     if (history.length > 0) {
       for (const message of parsedHistory) {
         if (message.role === 'system') {
-          continue; // пропускаем сообщение с ролью "system" и содержимым, равным modalInput.value
+          continue;
         }
         const chatMessage = document.createElement('div');
         chatMessage.classList.add('chat-message', message.role);
@@ -66,7 +66,6 @@ modalSubmitButton.addEventListener('click', function() {
   else {modalOverlay.style.display = 'none'};
 });
 
-// Закрываем модальное окно при нажатии на клавишу "Enter" в поле ввода
 modalInput.addEventListener('keyup', function(event) {
   if (modalInput.value.trim() !== '') {
   if (event.keyCode === 13) {
@@ -80,7 +79,6 @@ modalInput.addEventListener('keyup', function(event) {
 
 });
 
-// Функция для отправки запроса к ChatGPT API
 async function sendMessageToBot(messageText) {
   try {
     history.push({"role": "user", "content": messageText})
@@ -125,7 +123,6 @@ async function sendMessage() {
   chatInput.value = '';
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  // Send message to bot and receive response here
   const botMessage = await sendMessageToBot(messageText);
   const botResponse = document.createElement('div');
   botResponse.classList.add('chat-message', 'bot');
