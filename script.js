@@ -70,7 +70,7 @@ window.onload = function() {
 modalSubmitButton.addEventListener('click', function() {
   if (modalInput.value.trim() !== '') {
   modalOverlay.style.display = 'none';
-  history.push({"role": "system", "content": modalInput.value});
+  history.push({"role": "assistant", "content": modalInput.value});
   saveChatHistory();}
   else {modalOverlay.style.display = 'none'};
 });
@@ -80,7 +80,7 @@ modalInput.addEventListener('keyup', function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     modalOverlay.style.display = 'none';
-    history.push({"role": "system", "content": modalInput.value});
+    history.push({"role": "assistant", "content": modalInput.value});
     saveChatHistory();
   }
   if (modalInput.value.trim() === '') {modalOverlay.style.display = 'none'};
