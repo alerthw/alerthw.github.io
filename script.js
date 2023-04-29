@@ -8,7 +8,7 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
-const apiKey = process.env.APIKEY;
+const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5';
 const history = [];
 
 function escapehtml(text) {
@@ -19,7 +19,15 @@ function escapehtml(text) {
     '"': '&quot;',
     "'": '&#039;'
   };
-  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+  const regex = /(```[\s\S]*?```)|([&<>"'])/g;
+  return text.replace(regex, function(match, p1, p2) {
+    // Если это совпадение между кавычками, вернуть его без изменений
+    if (p1) {
+      return p1;
+    }
+    // Иначе заменить символы на соответствующие HTML-энтити
+    return map[p2];
+  });
 }
 
 function saveChatHistory() {
@@ -38,7 +46,7 @@ function loadChatHistory() {
         }
         const chatMessage = document.createElement('div');
         chatMessage.classList.add('chat-message', message.role);
-        chatMessage.innerHTML = `<p>${message.role === 'user' ? 'Вы' : 'Бот'}: ${escapehtml(message.content)}</p>`;
+        chatMessage.innerHTML = `<p>${message.role === 'user' ? 'Вы' : 'Бот'}: ${escapehtml(message.content).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
         chatMessages.appendChild(chatMessage);
       }
       chatMessages.scrollTop = chatMessages.scrollHeight; 
@@ -48,6 +56,7 @@ function loadChatHistory() {
 
 window.onload = function() {
   loadChatHistory();
+  hljs.highlightAll()
   if (history.length === 0) {
     modalOverlay.style.display = 'flex';
     modalInput.focus()
@@ -118,7 +127,7 @@ async function sendMessage() {
   examples.style.display = 'none';
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message', 'user');
-  userMessage.innerHTML = `<p>Вы: ${escapehtml(messageText)}</p>`;
+  userMessage.innerHTML = `<p>Вы: ${escapehtml(messageText).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
   chatMessages.appendChild(userMessage);
   chatInput.value = '';
   chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -126,7 +135,7 @@ async function sendMessage() {
   const botMessage = await sendMessageToBot(messageText);
   const botResponse = document.createElement('div');
   botResponse.classList.add('chat-message', 'bot');
-  botResponse.innerHTML = `<p>${escapehtml(botMessage.content.replace(/```([^`]+)```/g, '<code>$1</code>'))}</p>`;
+  botResponse.innerHTML = `<p>${escapehtml(botMessage.content).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
   chatMessages.appendChild(botResponse);
   chatMessages.scrollTop = chatMessages.scrollHeight;
   chatForm.disabled = false;
