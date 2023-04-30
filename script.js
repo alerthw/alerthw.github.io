@@ -8,17 +8,15 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
-const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+const themeToggleBtn = document.querySelector('.switch');
+const html = document.querySelector('html');
 const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5';
 const history = [];
 
-themeToggleBtn.addEventListener('click', () => {
-  // Получаем текущую тему
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-
-  // Меняем тему на противоположную
-  document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-});
+function changeTheme () {
+  const currentTheme = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+};
 
 function escapehtml(text) {
   let map = {
@@ -68,6 +66,7 @@ window.onload = function() {
   hljs.highlightAll()
   if (history.length === 0) {
     modalOverlay.style.display = 'flex';
+    examples.style.display = 'flex'
     modalInput.focus()
   }
   else {
@@ -129,11 +128,12 @@ async function sendMessage() {
   if (messageText.trim() === '') {
     return;
   }
+  examples.style.display = 'none';
+  const val = chatForm.innerHTML
   chatForm.innerHTML = '<span class="loading-dots"></span>';
   chatInput.disabled = true;
   chatForm.disabled = true;
   clearHistory.disabled = true;
-  examples.style.display = 'none';
   const userMessage = document.createElement('div');
   userMessage.classList.add('chat-message', 'user');
   userMessage.innerHTML = `<p>Вы: ${escapehtml(messageText).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
@@ -144,13 +144,13 @@ async function sendMessage() {
   const botMessage = await sendMessageToBot(messageText);
   const botResponse = document.createElement('div');
   botResponse.classList.add('chat-message', 'bot');
-  botResponse.innerHTML = `<p>${escapehtml(botMessage.content).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
+  botResponse.innerHTML = `<p>Бот: ${escapehtml(botMessage.content).replace(/```([^`]+)```/g, function(match, code) { return `<code>${hljs.highlightAuto(code).value}</code>`; })}</p>`;
   chatMessages.appendChild(botResponse);
   chatMessages.scrollTop = chatMessages.scrollHeight;
   chatForm.disabled = false;
   chatInput.disabled = false;
   clearHistory.disabled = false;
-  chatForm.innerHTML = 'Send';
+  chatForm.innerHTML = val;
 }
 
 chatInput.addEventListener('keydown', (e) => {
@@ -173,8 +173,6 @@ examplesList.addEventListener('click', (e) => {
 
 clearHistory.addEventListener('click', function() {
   history.length = 0;
-  chatMessages.innerHTML = '';
   localStorage.removeItem('chatHistory');
-  modalOverlay.style.display = 'flex';
-  modalInput.focus();
+  location.reload();
 });

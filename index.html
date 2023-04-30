@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8">
     <title>Chat with Bot</title>
@@ -19,13 +19,16 @@
 </svg>ChatGPT</h2>
   </div>
   <div class="header-right">
+    <label class="switch">
+  <input type="checkbox" onchange="changeTheme()">
+  <span class="slider round"></span>
+</label>
     <button class="clear-history-btn" style='display: inline-block; vertical-align: middle; text-align: center;'>
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style='vertical-align: sub;'>
     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
   </svg>
 </button>
-<button class="theme-toggle-btn" style='display: inline-block; vertical-align: middle; text-align: center;'>Theme</button>
   </div>
 </div>
       <div class="modal-overlay">
@@ -48,7 +51,7 @@
         </div>
       </div>
       <div class="chat-input">
-        <input type="text" placeholder="Type your message...">
+        <input type="text" maxlength="600" placeholder="Type your message...">
         <button style='display: inline-block; vertical-align: middle; text-align: center;'>Send<svg style='vertical-align: sub; margin-left: 4px;'xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
   <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
 </svg></button>

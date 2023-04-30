@@ -228,7 +228,7 @@ button[disabled]{
 .examples-btn {
   display: block;
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.45rem;
   background-color: #434343;
   color: #fff;
   border: none;
@@ -251,7 +251,7 @@ button[disabled]{
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -339,6 +339,13 @@ code {
   margin: 0px;
 }
 
+
+[data-theme="dark"],
+[data-theme="light"] {
+background-color: #181818;
+transition: background-color 0.4s ease-in-out;
+}
+
 [data-theme="dark"] {
   background-color: #181818;
 }
@@ -368,6 +375,23 @@ code {
 [data-theme="dark"] .chat-messages::-webkit-scrollbar-thumb {
   background-color: #666;
   border: 3px solid #1c1c1c;
+}
+
+[data-theme="dark"] .modal {
+  background: #121212;
+}
+
+[data-theme="dark"] .modal p {
+  color: #fff;
+}
+
+[data-theme="dark"] .modal input[type="text"] {
+  border: 1px solid #444;
+}
+
+[data-theme="dark"] .modal button {
+  background-color: #434343;
+  color: #fff;
 }
 
 [data-theme="dark"] .chat-message p {
@@ -417,12 +441,12 @@ background-color: #ffffff;
 }
 
 [data-theme="light"] .chat-header {
-background-color: #ebebeb;
+background-color: #e1e1e1;
 color: #333333;
 }
 
 [data-theme="light"] .chat-header button {
-background-color: #e6e6e6;
+background-color: #cbcaca;
 color: #333333;
 }
 
@@ -435,8 +459,25 @@ background-color: #cccccc;
 border: 3px solid #c1c1c1;
 }
 
+[data-theme="light"] .modal {
+  background: #f5f5f5;
+}
+
+[data-theme="light"] .modal p {
+  color: #333333;
+}
+
+[data-theme="light"] .modal input[type="text"] {
+  border: 1px solid #444;
+}
+
+[data-theme="light"] .modal button {
+  background-color: #afafaf;
+  color: #fff;
+}
+
 [data-theme="light"] .chat-message p {
-background-color: #f2f2f2;
+background-color: #e5e5e5;
 color: #333333;
 }
 
@@ -475,4 +516,151 @@ color: #333333;
 [data-theme="light"] .examples-btn:hover,
 .examples-btn:focus {
 background-color: #d9d9d9;
+}
+
+[data-theme="dark"] .chat-container,
+[data-theme="light"] .chat-container {
+transition: background-color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-header,
+[data-theme="light"] .chat-header {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-header button,
+[data-theme="light"] .chat-header button {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-messages,
+[data-theme="light"] .chat-messages {
+transition: background-color 0.4s ease-in-out, border-bottom 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-messages::-webkit-scrollbar-track,
+[data-theme="light"] .chat-messages::-webkit-scrollbar-track {
+transition: background-color 0.6s ease-in-out;
+}
+
+[data-theme="dark"] .chat-messages::-webkit-scrollbar-thumb,
+[data-theme="light"] .chat-messages::-webkit-scrollbar-thumb {
+transition: background-color 0.6s ease-in-out, border 0.6s ease-in-out;
+}
+
+[data-theme="dark"] .modal,
+[data-theme="light"] .modal {
+transition: background-color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .modal p,
+[data-theme="light"] .modal p {
+transition: color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .modal input[type="text"],
+[data-theme="light"] .modal input[type="text"] {
+transition: border 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .modal button,
+[data-theme="light"] .modal button {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-message p,
+[data-theme="light"] .chat-message p {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-input,
+[data-theme="light"] .chat-input {
+transition: border-top 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-input input,
+[data-theme="light"] .chat-input input {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-input input::placeholder,
+[data-theme="light"] .chat-input input::placeholder {
+transition: color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .chat-input button,
+[data-theme="light"] .chat-input button {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .examples-header,
+[data-theme="light"] .examples-header {
+transition: color 0.4s ease-in-out;
+}
+
+[data-theme="dark"] .examples-btn,
+[data-theme="light"] .examples-btn {
+transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #5c5959;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #b3b3b3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #b3b3b3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
