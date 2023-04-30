@@ -8,15 +8,16 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const modalSubmitButton = document.querySelector('.modal-submit');
 const modalInput = document.querySelector('.modal-input');
 const clearHistory = document.querySelector('.clear-history-btn');
-const themeToggleBtn = document.querySelector('.switch');
+const checkbox = document.querySelector('#chck');
 const html = document.querySelector('html');
 const apiKey = 'fg-CUG8FZ0N73Z7H7870EVJVFYEP6TIE2GDBYQN3YC5';
 const history = [];
 
-function changeTheme () {
+checkbox.addEventListener('change', function() {
   const currentTheme = html.getAttribute('data-theme');
   html.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-};
+});
+
 
 function escapehtml(text) {
   let map = {
