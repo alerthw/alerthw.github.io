@@ -62,7 +62,7 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.35s ease-in-out;
   display: grid;
   align-items: center;
   position: relative;
@@ -174,7 +174,7 @@ button[disabled]{
   padding: 10px 2px;
   border: none;
   border-radius: 5px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.35s ease-in-out;
   display: grid;
   align-items: center;
   width: 80px;
@@ -237,7 +237,7 @@ button[disabled]{
   font-weight: 500;
   text-align: left;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.35s ease-in-out;
 }
 
 .examples-btn:hover,
@@ -288,7 +288,7 @@ button[disabled]{
   padding: 10px 50px;
   border: none;
   border-radius: 5px;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.35s ease-in-out;
 }
 
 .modal button:hover {
@@ -343,7 +343,7 @@ code {
 [data-theme="dark"],
 [data-theme="light"] {
 background-color: #181818;
-transition: background-color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] {
@@ -520,87 +520,87 @@ background-color: #d9d9d9;
 
 [data-theme="dark"] .chat-container,
 [data-theme="light"] .chat-container {
-transition: background-color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-header,
 [data-theme="light"] .chat-header {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-header button,
 [data-theme="light"] .chat-header button {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-messages,
 [data-theme="light"] .chat-messages {
-transition: background-color 0.4s ease-in-out, border-bottom 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, border-bottom 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-messages::-webkit-scrollbar-track,
 [data-theme="light"] .chat-messages::-webkit-scrollbar-track {
-transition: background-color 0.6s ease-in-out;
+transition: background-color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-messages::-webkit-scrollbar-thumb,
 [data-theme="light"] .chat-messages::-webkit-scrollbar-thumb {
-transition: background-color 0.6s ease-in-out, border 0.6s ease-in-out;
+transition: background-color 0.35s ease-in-out, border 0.6s ease-in-out;
 }
 
 [data-theme="dark"] .modal,
 [data-theme="light"] .modal {
-transition: background-color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .modal p,
 [data-theme="light"] .modal p {
-transition: color 0.4s ease-in-out;
+transition: color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .modal input[type="text"],
 [data-theme="light"] .modal input[type="text"] {
-transition: border 0.4s ease-in-out;
+transition: border 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .modal button,
 [data-theme="light"] .modal button {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-message p,
 [data-theme="light"] .chat-message p {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-input,
 [data-theme="light"] .chat-input {
-transition: border-top 0.4s ease-in-out;
+transition: border-top 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-input input,
 [data-theme="light"] .chat-input input {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-input input::placeholder,
 [data-theme="light"] .chat-input input::placeholder {
-transition: color 0.4s ease-in-out;
+transition: color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .chat-input button,
 [data-theme="light"] .chat-input button {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .examples-header,
 [data-theme="light"] .examples-header {
-transition: color 0.4s ease-in-out;
+transition: color 0.35s ease-in-out;
 }
 
 [data-theme="dark"] .examples-btn,
 [data-theme="light"] .examples-btn {
-transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+transition: background-color 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 .switch {
@@ -626,8 +626,8 @@ transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
   right: 0;
   bottom: 0;
   background-color: #5c5959;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: ease 0.4s;
+  transition: ease 0.4s;
 }
 
 .slider:before {
@@ -638,8 +638,8 @@ transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: ease 0.4s;
+  transition: ease 0.4s;
 }
 
 input:checked + .slider {
