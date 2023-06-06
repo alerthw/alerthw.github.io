@@ -1,6 +1,6 @@
 const chatContainer = document.querySelector('.chat-container');
 const chatMessages = document.querySelector('.chat-messages');
-const chatInput = document.querySelector('.chat-input input');
+const chatInput = document.querySelector('.chat-input textarea');
 const chatForm = document.querySelector('.chat-input button');
 const examples = document.querySelector('.examples');
 const examplesList = document.querySelector('.examples-list');

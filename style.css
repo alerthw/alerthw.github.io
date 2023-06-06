@@ -153,16 +153,26 @@ button[disabled]{
   border-top: 1px solid #444;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  white-space: pre-wrap;
+  white-space: pre-wrap; /* выравниваем элементы по столбцам */
+  justify-content: flex-end; /* выравниваем элементы внизу */
+  min-height: 60px; /* минимальная высота контейнера */
 }
-.chat-input input {
-  flex: 1;
+.chat-input textarea {
+  flex-grow: 1;
   padding: 10px;
   border: none;
   border-radius: 5px;
   background-color: #333;
-  color: #fff;
+  color: #fff; 
+  font-size: 15px;
+  resize: none;
+  padding: 5px;
+  overflow: hidden;
+  box-sizing: border-box;
+  height: 40px;
+  min-height: 40px;
 }
+
 
 .chat-input input::placeholder {
   color: #ccc;
